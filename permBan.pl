@@ -31,7 +31,7 @@ foreach my $thisLine (@fileArray)
 	if ($thisLine =~ m/ALL: (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/)
 	{#has previously banned ip
 		push (@oldBans, $1); #add this old ban to the list
-		print "\nOld Ban: $1";
+		#print "\nOld Ban: $1";
 	}
 }
 
@@ -47,8 +47,8 @@ foreach my $thisLine (@fileArray)
 		if (!grep(/^$thisIp$/, @oldBans)) 
 		{#not in list of previous bans
 			
-			print "\nNew IP: $thisIp\n";
-			print "old bans: @oldBans\n";
+			#print "\nNew IP: $thisIp\n";
+			#print "old bans: @oldBans\n";
 			
 			$ips{$1}++;
 		}
@@ -69,6 +69,7 @@ foreach my $thisBan (@newBans)
 	#ALL: 123.4.56.789
 	
 	print $ofile "ALL: $thisBan\n";
+	print time . " ALL: $thisBan\n";
 }
 close $ofile;
-print "\nDone\n\n";
+#print "\nDone\n\n";
